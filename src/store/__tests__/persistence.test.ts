@@ -33,7 +33,7 @@ describe('persistence', () => {
     await flush();
     expect(await saved()).toEqual({
       version: PERSIST_VERSION,
-      state: { settings: { themeMode: ThemeModes.light } },
+      state: { auth: { session: null }, settings: { themeMode: ThemeModes.light } },
     });
 
     const second = makeStore();
