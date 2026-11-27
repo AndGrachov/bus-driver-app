@@ -1,7 +1,8 @@
 /**
  * Labelled text input with an inline error and an optional accessory button
- * on the right (e.g. "Show" for passwords). The error is announced together
- * with the field, so screen readers hear what to fix.
+ * on the right (e.g. "Show" for passwords). The error line is always
+ * reserved, so showing an error never shifts the fields below. The error is
+ * announced together with the field, so screen readers hear what to fix.
  */
 import type { ComponentRef, Ref } from 'react';
 import { Pressable, Text, TextInput, type TextInputProps, View } from 'react-native';
@@ -46,11 +47,13 @@ export function TextField({ label, error, invalid = false, accessory, ref, ...in
           </Pressable>
         ) : null}
       </View>
-      {error ? (
-        <Text accessibilityLiveRegion="polite" style={styles.error}>
-          {error}
-        </Text>
-      ) : null}
+      <Text
+        accessibilityLiveRegion="polite"
+        accessibilityRole={error ? 'alert' : undefined}
+        style={styles.error}
+      >
+        {error ?? ''}
+      </Text>
     </View>
   );
 }

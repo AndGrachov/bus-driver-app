@@ -39,7 +39,8 @@ export function useStyles(hasError: boolean) {
       justifyContent: 'center',
     },
     accessoryLabel: { ...type.meta, fontFamily: fonts.bodySemi, color: colors.text },
-    error: { ...type.meta, color: colors.danger },
+    /** Reserved even when empty: one line of meta text. */
+    error: { ...type.meta, minHeight: type.meta.lineHeight, color: colors.danger },
   });
   return { styles, colors };
 }

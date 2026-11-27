@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { useTheme } from '@/shared/theme/ThemeProvider';
-import { radii, spacing } from '@/shared/theme/tokens';
+import { spacing } from '@/shared/theme/tokens';
 import { type } from '@/shared/theme/typography';
 
 export function useStyles() {
@@ -12,14 +12,7 @@ export function useStyles() {
     wordmark: { ...type.section, color: colors.muted },
     title: { ...type.screenTitle, color: colors.text },
     lead: { ...type.body, color: colors.muted },
-    fields: { gap: spacing.lg },
-    formError: {
-      ...type.body,
-      color: colors.danger,
-      padding: spacing.md,
-      borderRadius: radii.row,
-      backgroundColor: colors.surface,
-    },
+    fields: { gap: spacing.sm },
     footer: { flex: 1, justifyContent: 'flex-end', gap: spacing.md },
     demoHint: { ...type.meta, color: colors.muted, textAlign: 'center', marginTop: spacing.sm },
   });

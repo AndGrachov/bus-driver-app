@@ -39,7 +39,7 @@ describe('SignInForm', () => {
     await fireEvent.changeText(screen.getByLabelText('Phone or email'), 'driver');
     await fireEvent.changeText(screen.getByLabelText('Password'), 'demo1234');
     await fireEvent.press(screen.getByRole('button', { name: 'Sign in' }));
-    expect(screen.getByText(/phone number with country code/)).toBeOnTheScreen();
+    expect(screen.getByText(/phone with country code/)).toBeOnTheScreen();
     expect(selectSession(store.getState())).toBeNull();
   });
 
@@ -48,7 +48,7 @@ describe('SignInForm', () => {
     await fireEvent.changeText(screen.getByLabelText('Phone or email'), 'someone@depot.test');
     await fireEvent.changeText(screen.getByLabelText('Password'), 'demo1234');
     await fireEvent.press(screen.getByRole('button', { name: 'Sign in' }));
-    expect(await screen.findByRole('alert')).toHaveTextContent(/use the demo account/);
+    expect(await screen.findByRole('alert')).toHaveTextContent('Wrong phone, email or password.');
 
     await fireEvent.changeText(screen.getByLabelText('Password'), 'demo12345');
     expect(screen.queryByRole('alert')).toBeNull();

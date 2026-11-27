@@ -4,30 +4,28 @@
  * primary button stays reachable while typing.
  */
 import type { ReactNode } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { useTheme } from '@/shared/theme/ThemeProvider';
-import { spacing } from '@/shared/theme/tokens';
+import { useStyles } from './useStyles';
 
 type Props = { children: ReactNode; keyboard?: boolean };
 
 export function Screen({ children, keyboard = false }: Props) {
-  const { colors } = useTheme();
-  const background = { backgroundColor: colors.bg };
+  const { styles } = useStyles();
 
   if (!keyboard) {
     return (
-      <SafeAreaView style={[styles.root, background]}>
+      <SafeAreaView style={styles.root}>
         <View style={styles.content}>{children}</View>
       </SafeAreaView>
     );
   }
 
   return (
-    <SafeAreaView style={[styles.root, background]}>
+    <SafeAreaView style={styles.root}>
       <KeyboardAvoidingView
-        style={styles.root}
+        style={styles.fill}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       >
         <ScrollView
@@ -41,9 +39,3 @@ export function Screen({ children, keyboard = false }: Props) {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  root: { flex: 1 },
-  content: { flex: 1, padding: spacing.xl },
-  scrollContent: { flexGrow: 1, padding: spacing.xl },
-});

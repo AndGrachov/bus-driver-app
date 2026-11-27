@@ -27,10 +27,13 @@ export const errorField: Record<AuthErrorCodeValue, SignInFieldValue | null> = {
   [AuthErrorCode.wrongCredentials]: null,
 };
 
-/** Copy says what happened and what to do next. */
+/**
+ * Copy says what happened and what to do next. Each message fits one line on
+ * a small phone: it sits in a reserved slot under the field, so the form
+ * never jumps when an error appears.
+ */
 export const authErrorMessages: Record<AuthErrorCodeValue, string> = {
-  [AuthErrorCode.invalidIdentifier]: 'Enter your phone number with country code, or your email address.',
-  [AuthErrorCode.passwordTooShort]: `Password needs at least ${MIN_PASSWORD_LENGTH} characters.`,
-  [AuthErrorCode.wrongCredentials]:
-    'Phone, email or password is wrong. Check them or use the demo account.',
+  [AuthErrorCode.invalidIdentifier]: 'Use a phone with country code or an email.',
+  [AuthErrorCode.passwordTooShort]: `Use at least ${MIN_PASSWORD_LENGTH} characters.`,
+  [AuthErrorCode.wrongCredentials]: 'Wrong phone, email or password.',
 };

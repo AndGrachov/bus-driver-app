@@ -53,8 +53,9 @@ export function SignInForm() {
           label="Password"
           value={form.password}
           onChangeText={form.setPassword}
-          error={fieldError(SignInField.password)}
-          invalid={formError !== null}
+          // Wrong credentials belong to the pair; the message takes the
+          // password's reserved line so the layout stays still.
+          error={fieldError(SignInField.password) ?? formError}
           secureTextEntry={!passwordVisible}
           autoCapitalize="none"
           autoCorrect={false}
@@ -67,11 +68,6 @@ export function SignInForm() {
             onPress: () => setPasswordVisible((visible) => !visible),
           }}
         />
-        {formError ? (
-          <Text accessibilityLiveRegion="polite" accessibilityRole="alert" style={styles.formError}>
-            {formError}
-          </Text>
-        ) : null}
       </View>
 
       <View style={styles.footer}>
