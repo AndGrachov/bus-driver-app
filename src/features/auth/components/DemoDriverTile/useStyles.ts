@@ -21,6 +21,8 @@ export function useStyles() {
       borderWidth: 1,
       borderStyle: 'dashed',
       borderColor: colors.line,
+      // Filled so it reads as a control on the light page background too.
+      backgroundColor: colors.surface,
     },
     pressed: { opacity: PRESSED_OPACITY },
     avatar: {
@@ -29,7 +31,7 @@ export function useStyles() {
       borderRadius: radii.chip,
       borderWidth: 1,
       borderColor: colors.line,
-      backgroundColor: colors.surface,
+      backgroundColor: colors.bg,
       alignItems: 'center',
       justifyContent: 'center',
     },
