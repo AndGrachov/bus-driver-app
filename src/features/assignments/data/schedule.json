@@ -1,0 +1,146 @@
+{
+  "driver": { "id": "drv-014", "name": "Test Driver" },
+  "dispatcher": { "name": "Central dispatch", "phone": "+49 30 1234 5600" },
+  "assignments": [
+    {
+      "id": "asg-1041",
+      "type": "tour",
+      "client": "Alpine Tours Group",
+      "bus": { "plate": "KLM-482", "seats": 49 },
+      "start": { "time": "2026-12-01T23:30:00+01:00", "place": "Airport, Terminal 1, coach bay C" },
+      "end": { "time": "2026-12-02T00:40:00+01:00", "place": "Grand Hotel, main door" },
+      "passengers": 36,
+      "itinerary": [
+        { "time": "23:30", "stop": "Airport, Terminal 1" },
+        { "time": "00:40", "stop": "Grand Hotel" }
+      ],
+      "status": "completed",
+      "updatedAt": "2026-12-01T18:00:00+01:00",
+      "revision": 1
+    },
+    {
+      "id": "asg-1042",
+      "type": "shuttle",
+      "client": "Northfield Manufacturing",
+      "bus": { "plate": "ABC-123", "seats": 49 },
+      "start": { "time": "2026-12-02T05:20:00+01:00", "place": "Central Bus Station, Bay 4" },
+      "end": { "time": "2026-12-02T06:10:00+01:00", "place": "Northfield Plant, Gate 2" },
+      "passengers": 42,
+      "itinerary": [
+        { "time": "05:20", "stop": "Central Bus Station" },
+        { "time": "05:35", "stop": "Market Square" },
+        { "time": "06:10", "stop": "Northfield Plant" }
+      ],
+      "status": "not_started",
+      "updatedAt": "2026-12-01T18:00:00+01:00"
+    },
+    {
+      "id": "asg-1043",
+      "type": "tour",
+      "client": "Alpine Tours Group",
+      "bus": { "plate": "KLM-482", "seats": 49 },
+      "start": { "time": "2026-12-02T09:30:00+01:00", "place": "Grand Hotel, main door" },
+      "end": { "time": "2026-12-02T13:15:00+01:00", "place": "Lakeside Castle, coach park" },
+      "passengers": 38,
+      "itinerary": [
+        { "time": "09:30", "stop": "Grand Hotel" },
+        { "time": "10:40", "stop": "Old Town Viewpoint" },
+        { "time": "11:30", "stop": "Cathedral Square" },
+        { "time": "13:15", "stop": "Lakeside Castle" }
+      ],
+      "status": "not_started",
+      "updatedAt": "2026-12-01T18:00:00+01:00",
+      "revision": 1,
+      "notes": "Group guide: Marta. Two wheelchair users — use the rear lift."
+    },
+    {
+      "id": "asg-1044",
+      "type": "shuttle",
+      "client": "Northfield Manufacturing",
+      "bus": { "plate": "ABC-123", "seats": 49 },
+      "start": { "time": "2026-12-02T14:20:00+01:00", "place": "Northfield Plant, Gate 2" },
+      "end": { "time": "2026-12-02T15:10:00+01:00", "place": "Central Bus Station, Bay 4" },
+      "passengers": 40,
+      "itinerary": [
+        { "time": "14:20", "stop": "Northfield Plant" },
+        { "time": "14:50", "stop": "Market Square" },
+        { "time": "15:10", "stop": "Central Bus Station" }
+      ],
+      "status": "not_started",
+      "updatedAt": "2026-12-01T18:00:00+01:00",
+      "revision": 1
+    },
+    {
+      "id": "asg-1045",
+      "type": "tour",
+      "client": "Alpine Tours Group",
+      "bus": { "plate": "KLM-482", "seats": 49 },
+      "start": { "time": "2026-12-02T23:40:00+01:00", "place": "Airport, Terminal 2, coach bay F" },
+      "end": { "time": "2026-12-03T00:50:00+01:00", "place": "City hotels (3 drop-offs)" },
+      "passengers": 44,
+      "itinerary": [
+        { "time": "23:40", "stop": "Airport, Terminal 2" },
+        { "time": "00:20", "stop": "Grand Hotel" },
+        { "time": "00:35", "stop": "Riverside Inn" },
+        { "time": "00:50", "stop": "Park Hotel" }
+      ],
+      "status": "not_started",
+      "updatedAt": "2026-12-01T18:00:00+01:00",
+      "revision": 1,
+      "notes": "Flight LH 1907 — check arrival time before leaving the depot."
+    },
+    {
+      "id": "asg-1046",
+      "type": "shuttle",
+      "client": "Northfield Manufacturing",
+      "bus": { "plate": "ABC-123", "seats": 49 },
+      "start": { "time": "2026-12-03T05:20:00+01:00", "place": "Central Bus Station, Bay 4" },
+      "end": { "time": "2026-12-03T06:10:00+01:00", "place": "Northfield Plant, Gate 2" },
+      "passengers": 42,
+      "itinerary": [
+        { "time": "05:20", "stop": "Central Bus Station" },
+        { "time": "05:35", "stop": "Market Square" },
+        { "time": "06:10", "stop": "Northfield Plant" }
+      ],
+      "status": "not_started",
+      "updatedAt": "2026-12-01T18:00:00+01:00",
+      "revision": 1
+    },
+    {
+      "id": "asg-1047",
+      "type": "tour",
+      "client": "Cityline Travel",
+      "bus": { "plate": "LMN-907", "seats": 57 },
+      "start": { "time": "2026-12-03T08:00:00+01:00", "place": "Central Bus Station, Bay 1" },
+      "end": { "time": "2026-12-03T17:30:00+01:00", "place": "Central Bus Station, Bay 1" },
+      "passengers": 51,
+      "itinerary": [
+        { "time": "08:00", "stop": "Central Bus Station" },
+        { "time": "09:45", "stop": "Riverside Winery" },
+        { "time": "12:30", "stop": "Old Mill Restaurant" },
+        { "time": "15:00", "stop": "Falcon Gorge Lookout" },
+        { "time": "17:30", "stop": "Central Bus Station" }
+      ],
+      "status": "not_started",
+      "updatedAt": "2026-12-01T18:00:00+01:00",
+      "revision": 1
+    },
+    {
+      "id": "asg-1048",
+      "type": "shuttle",
+      "client": "Harbour Logistics",
+      "bus": { "plate": "ABC-123", "seats": 49 },
+      "start": { "time": "2026-12-05T06:45:00+01:00", "place": "Central Bus Station, Bay 4" },
+      "end": { "time": "2026-12-05T07:35:00+01:00", "place": "Harbour Logistics, North Gate" },
+      "passengers": 30,
+      "itinerary": [
+        { "time": "06:45", "stop": "Central Bus Station" },
+        { "time": "07:05", "stop": "Station Road" },
+        { "time": "07:35", "stop": "Harbour Logistics" }
+      ],
+      "status": "not_started",
+      "updatedAt": "2026-12-01T18:00:00+01:00",
+      "revision": 1
+    }
+  ]
+}
