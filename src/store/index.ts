@@ -4,7 +4,8 @@
  * because this file pulls in every feature reducer and would create a cycle.
  */
 export { appReset, stateRehydrated } from './actions';
-export { useAppDispatch, useAppSelector, useStoreHydration } from './hooks';
+export { useAppDispatch, useAppSelector } from './hooks';
 export { selectIsHydrated } from './hydrationSlice';
 export { hydrateStore, resetAppData } from './persistence';
+export { useStoreHydration } from './useStoreHydration';
 export { makeStore, type AppDispatch, type AppStore, type AppThunk, type RootState } from './store';

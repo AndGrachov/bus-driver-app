@@ -6,10 +6,12 @@ import { combineReducers, configureStore, type ThunkAction, type UnknownAction }
 import { hydrationSlice } from './hydrationSlice';
 import { createPersistenceMiddleware } from './persistence';
 
+import { authSlice } from '@/features/auth';
 import { settingsSlice } from '@/features/settings';
 
 const rootReducer = combineReducers({
   [hydrationSlice.name]: hydrationSlice.reducer,
+  [authSlice.name]: authSlice.reducer,
   [settingsSlice.name]: settingsSlice.reducer,
 });
 

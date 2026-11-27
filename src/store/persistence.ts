@@ -19,6 +19,7 @@ import { appReset, stateRehydrated } from './actions';
 import { hydrationStarted, HydrationStatus } from './hydrationSlice';
 import type { AppThunk, RootState } from './store';
 
+import { authStateSchema } from '@/features/auth';
 import { settingsStateSchema } from '@/features/settings';
 import { readJson, removeItem, writeJson } from '@/shared/lib/storage';
 
@@ -28,6 +29,7 @@ export const STORAGE_KEY = 'bus-driver-app/state';
 export const PERSIST_VERSION = 1;
 
 const persistedSchemas = {
+  auth: authStateSchema,
   settings: settingsStateSchema,
 } as const;
 
