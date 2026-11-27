@@ -4,12 +4,14 @@ import { useTheme } from '@/shared/theme/ThemeProvider';
 import { radii, spacing, touch } from '@/shared/theme/tokens';
 import { fonts, type } from '@/shared/theme/typography';
 
+import { FieldTone, type FieldToneValue } from './constants';
+
 /** Inputs are taller than the 48 pt minimum: they are typed into in a cab. */
 const FIELD_HEIGHT = 56;
 const INPUT_FONT_SIZE = 18;
 const ERROR_BORDER_WIDTH = 2;
 
-export function useStyles(hasError: boolean) {
+export function useStyles(hasError: boolean, tone: FieldToneValue) {
   const { colors } = useTheme();
   const styles = StyleSheet.create({
     root: { gap: spacing.sm },
@@ -21,7 +23,7 @@ export function useStyles(hasError: boolean) {
       borderRadius: radii.row,
       borderWidth: hasError ? ERROR_BORDER_WIDTH : StyleSheet.hairlineWidth * 2,
       borderColor: hasError ? colors.danger : colors.line,
-      backgroundColor: colors.surface,
+      backgroundColor: tone === FieldTone.inset ? colors.bg : colors.surface,
     },
     input: {
       flex: 1,
@@ -38,7 +40,6 @@ export function useStyles(hasError: boolean) {
       alignItems: 'center',
       justifyContent: 'center',
     },
-    accessoryLabel: { ...type.meta, fontFamily: fonts.bodySemi, color: colors.text },
     /** Reserved even when empty: one line of meta text. */
     error: { ...type.meta, minHeight: type.meta.lineHeight, color: colors.danger },
   });

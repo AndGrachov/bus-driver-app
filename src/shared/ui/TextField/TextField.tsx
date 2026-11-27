@@ -1,15 +1,20 @@
 /**
- * Labelled text input with an inline error and an optional accessory button
- * on the right (e.g. "Show" for passwords). The error line is always
+ * Labelled text input with an inline error and an optional icon button on
+ * the right (e.g. show or hide a password). `inset` is for fields placed on
+ * a surface card: they take the page background to stay visible. The error line is always
  * reserved, so showing an error never shifts the fields below. The error is
  * announced together with the field, so screen readers hear what to fix.
  */
 import type { ComponentRef, Ref } from 'react';
 import { Pressable, Text, TextInput, type TextInputProps, View } from 'react-native';
 
+import { Icon, type IconNameValue } from '../Icon/Icon';
+
+import { FieldTone, type FieldToneValue } from './constants';
 import { useStyles } from './useStyles';
 
-type Accessory = { label: string; onPress: () => void };
+/** `label` is what a screen reader announces for the icon button. */
+type Accessory = { icon: IconNameValue; label: string; onPress: () => void };
 
 type Props = Omit<TextInputProps, 'style' | 'placeholderTextColor'> & {
   label: string;
@@ -17,12 +22,21 @@ type Props = Omit<TextInputProps, 'style' | 'placeholderTextColor'> & {
   /** Marks the field without repeating a message shown elsewhere. */
   invalid?: boolean;
   accessory?: Accessory;
+  tone?: FieldToneValue;
   ref?: Ref<ComponentRef<typeof TextInput>>;
 };
 
-export function TextField({ label, error, invalid = false, accessory, ref, ...inputProps }: Props) {
+export function TextField({
+  label,
+  error,
+  invalid = false,
+  accessory,
+  tone = FieldTone.surface,
+  ref,
+  ...inputProps
+}: Props) {
   const hasError = invalid || Boolean(error);
-  const { styles, colors } = useStyles(hasError);
+  const { styles, colors } = useStyles(hasError, tone);
 
   return (
     <View style={styles.root}>
@@ -43,7 +57,7 @@ export function TextField({ label, error, invalid = false, accessory, ref, ...in
             onPress={accessory.onPress}
             style={styles.accessory}
           >
-            <Text style={styles.accessoryLabel}>{accessory.label}</Text>
+            <Icon name={accessory.icon} color={colors.text} />
           </Pressable>
         ) : null}
       </View>

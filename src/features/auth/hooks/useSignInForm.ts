@@ -1,12 +1,12 @@
 /**
  * State and actions of the sign-in form: field values, the current error,
- * the pending request, and filling in the demo account.
+ * the pending request, and one-tap sign-in as the demo driver.
  */
 import * as Haptics from 'expo-haptics';
 import { useState } from 'react';
 
 import { DEMO_ACCOUNT } from '../data/demoAccount';
-import { AuthError, signIn } from '../lib/authService';
+import { AuthError, type Credentials, signIn } from '../lib/authService';
 import {
   AuthErrorCode,
   type AuthErrorCodeValue,
@@ -42,23 +42,27 @@ export function useSignInForm() {
     setError(null);
   };
 
-  const fillDemoAccount = () => {
-    setIdentifierValue(DEMO_ACCOUNT.email);
-    setPasswordValue(DEMO_ACCOUNT.password);
-    setError(null);
-  };
-
-  const submit = async () => {
+  const send = async (credentials: Credentials) => {
     if (submitting) return;
     setSubmitting(true);
+    setError(null);
     try {
-      dispatch(signedIn(await signIn({ identifier, password })));
+      dispatch(signedIn(await signIn(credentials)));
     } catch (cause) {
       const code = cause instanceof AuthError ? cause.code : AuthErrorCode.wrongCredentials;
       setError(toError(code));
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error).catch(() => undefined);
       setSubmitting(false);
     }
+  };
+
+  const submit = () => send({ identifier, password });
+
+  /** Shows the demo credentials in the fields while it signs in with them. */
+  const signInAsDemo = () => {
+    setIdentifierValue(DEMO_ACCOUNT.email);
+    setPasswordValue(DEMO_ACCOUNT.password);
+    return send({ identifier: DEMO_ACCOUNT.email, password: DEMO_ACCOUNT.password });
   };
 
   return {
@@ -68,7 +72,7 @@ export function useSignInForm() {
     submitting,
     setIdentifier,
     setPassword,
-    fillDemoAccount,
+    signInAsDemo,
     submit,
   };
 }

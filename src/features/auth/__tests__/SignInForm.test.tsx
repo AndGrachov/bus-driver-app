@@ -27,10 +27,9 @@ jest.mock('../model/constants', () => ({
 }));
 
 describe('SignInForm', () => {
-  it('signs in with the demo account', async () => {
+  it('signs in as the demo driver with one tap', async () => {
     const store = await setup();
-    await fireEvent.press(screen.getByRole('button', { name: 'Fill in demo account' }));
-    await fireEvent.press(screen.getByRole('button', { name: 'Sign in' }));
+    await fireEvent.press(screen.getByRole('button', { name: 'Sign in as the demo driver' }));
     await waitFor(() => expect(selectSession(store.getState())?.driverName).toBe('Test Driver'));
   });
 
@@ -52,5 +51,16 @@ describe('SignInForm', () => {
 
     await fireEvent.changeText(screen.getByLabelText('Password'), 'demo12345');
     expect(screen.queryByRole('alert')).toBeNull();
+  });
+});
+
+describe('password visibility', () => {
+  it('toggles with the eye button and names the action for screen readers', async () => {
+    await setup();
+    const password = screen.getByLabelText('Password');
+    expect(password).toHaveProp('secureTextEntry', true);
+    await fireEvent.press(screen.getByRole('button', { name: 'Show password' }));
+    expect(screen.getByLabelText('Password')).toHaveProp('secureTextEntry', false);
+    expect(screen.getByRole('button', { name: 'Hide password' })).toBeOnTheScreen();
   });
 });
