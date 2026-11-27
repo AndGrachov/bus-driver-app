@@ -7,4 +7,9 @@ module.exports = defineConfig([
   {
     ignores: ['dist/*', '.expo/*'],
   },
+  {
+    // Runtime import cycles break module init on web and native (Jest misses
+    // them), so they fail lint. Type-only imports are ignored.
+    rules: { 'import/no-cycle': ['error', { ignoreExternal: true }] },
+  },
 ]);
